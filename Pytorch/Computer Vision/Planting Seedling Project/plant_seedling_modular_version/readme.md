@@ -21,7 +21,7 @@ This codebase requires the following Python packages:
 - pandas
 - torch
 - torchvision
--
+
 ## Acknowledgments
 
 I would like to extend my appreciation to the Aarhus University Department of Engineering Signal Processing Group for hosting the original data.
