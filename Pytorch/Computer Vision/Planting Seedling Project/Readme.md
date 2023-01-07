@@ -1,10 +1,10 @@
 # Plant Seedling Classification
 Welcome to the Plant Seedling Classification repository! This codebase contains the necessary code to train and evaluate a model for classifying weed and crop seedlings.
 
-Data
+## Data
 The dataset used in this project consists of images of approximately 960 unique plants belonging to 12 species at various growth stages. It has been provided by the Aarhus University Signal Processing group in collaboration with the University of Southern Denmark.
 
-Code Overview
+## Code Overview
 The following files are included in this repository:
 
 - `preprocess.py`: This script contains functions for preprocessing the raw image data and creating train and test datasets.
@@ -14,13 +14,14 @@ The following files are included in this repository:
 Running the Code
 To run the code, you will need to install the necessary dependencies and download the data. Once these steps are complete, you can run the main.py script to train and evaluate the model.
 
-Dependencies
+## Dependencies
 This codebase requires the following Python packages:
 
 - numpy
 - pandas
 - torch
 - torchvision
-- Acknowledgments
-- 
+-
+## Acknowledgments
+
 I would like to extend my appreciation to the Aarhus University Department of Engineering Signal Processing Group for hosting the original data.
