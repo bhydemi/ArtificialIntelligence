@@ -1,4 +1,4 @@
-Plant Seedling Classification
+# Plant Seedling Classification
 Welcome to the Plant Seedling Classification repository! This codebase contains the necessary code to train and evaluate a model for classifying weed and crop seedlings.
 
 Data
