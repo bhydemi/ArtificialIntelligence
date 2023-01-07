@@ -16,9 +16,10 @@ To run the code, you will need to install the necessary dependencies and downloa
 Dependencies
 This codebase requires the following Python packages:
 
-numpy
-pandas
-torch
-torchvision
-Acknowledgments
-We would like to extend our appreciation to the Aarhus University Department of Engineering Signal Processing Group for hosting the original data.
+- numpy
+- pandas
+- torch
+- torchvision
+- Acknowledgments
+- 
+I would like to extend my appreciation to the Aarhus University Department of Engineering Signal Processing Group for hosting the original data.
