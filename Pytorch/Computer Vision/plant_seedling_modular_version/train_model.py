@@ -20,10 +20,22 @@ with warnings.catch_warnings():
 
 def full_training(train_config: TrainingConfiguration = TrainingConfiguration()):
     """
-    This function takes in training configurations, trains a models and output the model together with
-    performance data of the model. 
+    Train and evaluate a PyTorch model on a given dataset.
 
+    The model is trained for a specified number of epochs, and its performance is
+    evaluated on both the training and test datasets. The model with the best
+    performance on the test dataset is saved.
+
+    Parameters:
+    train_config (TrainingConfiguration, optional): A configuration object
+        containing the model, optimizer, learning rate, and number of epochs.
+        Default is an instance of TrainingConfiguration.
+
+    Returns:
+    tuple: A tuple containing the mean and standard deviation of the training data,
+        the best model, and a DataFrame of the model's performance during training.
     """
+
     model = train_config.model
     optimizer = train_config.optimizer(params=model.parameters(), lr=train_config.learning_rate)
     train_loss = []

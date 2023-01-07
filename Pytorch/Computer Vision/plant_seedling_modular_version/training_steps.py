@@ -8,7 +8,16 @@ from torch.utils.data import DataLoader
 
 def calculate_class_weights(train_loader: DataLoader):
     """
-    This functions takes in a train_loader object and calc
+    Calculate class weights for a PyTorch dataloader.
+
+    The class weights are calculated using the 'balanced' option from
+    sklearn.utils.class_weight.compute_class_weight.
+
+    Parameters:
+    train_loader (DataLoader): A PyTorch dataloader containing the training data.
+
+    Returns:
+    torch.tensor: A tensor of class weights, with one weight for each class.
     """
     targets = torch.tensor([])
     for batch, (X, y) in enumerate(train_loader):
@@ -19,6 +28,19 @@ def calculate_class_weights(train_loader: DataLoader):
     return class_weights
 
 def train_model(model: torch.nn.Module, train_loader: DataLoader, loss_criteron, optimizer: torch.optim, classes: list):
+    """
+    Train a PyTorch model on a given dataset.
+
+    Parameters:
+    model (torch.nn.Module): The PyTorch model to train.
+    train_loader (DataLoader): A PyTorch dataloader containing the training data.
+    loss_criterion: The criterion used to compute the loss.
+    optimizer (torch.optim): The optimizer used to update the model's weights.
+    classes (list): A list of class labels.
+
+    Returns:
+    tuple: A tuple containing the training accuracy, average loss, and F1 score.
+    """
     model.train()
     loss_sum = 0
     total_correct = 0 
@@ -44,6 +66,18 @@ def train_model(model: torch.nn.Module, train_loader: DataLoader, loss_criteron,
     return accuracy, avg_loss, f1_score.item()
 
 def val(model: torch.nn.Module, test_loader: DataLoader, loss_criteron, classes: list):
+    """
+    Evaluate a PyTorch model on a given dataset.
+
+    Parameters:
+    model (torch.nn.Module): The PyTorch model to evaluate.
+    test_loader (DataLoader): A PyTorch dataloader containing the test data.
+    loss_criterion: The criterion used to compute the loss.
+    classes (list): A list of class labels.
+
+    Returns:
+    tuple: A tuple containing the test accuracy, average loss, and F1 score.
+    """
     model.eval()
     pred =  torch.tensor([]).to(device)
     target =  torch.tensor([]).to(device)

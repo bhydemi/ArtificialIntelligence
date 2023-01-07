@@ -18,15 +18,35 @@ from configuration import PreprocessConfiguration, DataStorage
 from copy import copy
 
 def download_kaggle_data(Data=DataStorage):
-    """
-    Downloads Data from Opensource Sites Like Kaggle
+    """Downloads data from a Kaggle competition.
+    
+    Downloads the data for the specified Kaggle competition to the local machine.
+    The data is saved in a subdirectory named after the competition in the
+    current working directory.
+    
+    Args:
+        Data (DataStorage, optional): A DataStorage object containing information
+            about the Kaggle competition and the data to be downloaded. Defaults
+            to an instance of the DataStorage class.
+    
+    Returns:
+        None
     """
     od.download(DataStorage.path_to_load)
 
 def mean_std_images(image_url:str, sample:int) -> tuple:
-    """
-    Takes in a random sample of images and returns the mean and 
-    standard deviation of the all channels regarding all images
+    """Calculates the mean and standard deviation of a sample of images.
+    
+    Args:
+        image_url (str): A glob-style file pattern that specifies the location of the
+            images to be processed.
+        sample (int): The number of images to be randomly sampled from the image_url.
+    
+    Returns:
+        tuple: A tuple containing the mean and standard deviation of the image sample,
+            with the mean and standard deviation of each color channel computed 
+            separately. The mean and standard deviation are returned as numpy arrays
+            with dtype np.float32 and shape (3,).
     """
     means = np.array([0, 0, 0], dtype=np.float32)
     stds = np.array([0, 0, 0], dtype=np.float32)
@@ -43,9 +63,26 @@ def mean_std_images(image_url:str, sample:int) -> tuple:
 
 
 def preprocess_image_folder_data( preprocessing_configuration = PreprocessConfiguration()):
-    """
-    Preprocessing Downloaded Data and Returns DataLoader Files for Training And Test Data
-    Mean & Standard Deviation of Sample Images and Classes of Data
+    """Preprocesses image data for training and testing.
+    
+    Downloads the data for the specified Kaggle competition if it is not already 
+    present on the local machine. Calculates the mean and standard deviation of 
+    a random sample of images, and applies these statistics as normalization 
+    parameters for the training and test datasets. If the preprocessing_configuration
+    parameter specifies that the data is for prediction, no train/test split is performed
+    and the full dataset is returned as a PyTorch DataLoader object.
+    
+    Args:
+        preprocessing_configuration (PreprocessConfiguration, optional): An 
+            instance of the PreprocessConfiguration class containing information 
+            about the image data and the desired preprocessing behavior. Defaults 
+            to an instance of the PreprocessConfiguration class with default values.
+    
+    Returns:
+        tuple: A tuple containing PyTorch DataLoader objects for the training 
+            and test datasets, respectively. If the preprocessing_configuration 
+            parameter specifies that the data is for prediction, returns a 
+            single DataLoader object for the full dataset.
     """
     download_kaggle_data()
     print('Step 1: Preprocessing Image')
