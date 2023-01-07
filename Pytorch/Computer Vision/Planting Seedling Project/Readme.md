@@ -7,9 +7,9 @@ The dataset used in this project consists of images of approximately 960 unique 
 Code Overview
 The following files are included in this repository:
 
-`preprocess.py`: This script contains functions for preprocessing the raw image data and creating train and test datasets.
-`train_steps.py`: This script contains functions for training and evaluating a model on the dataset.
-`train_model.py`: This script is the entry point for training and evaluating a model. It uses the functions from the other two scripts to preprocess the data, train a model, and evaluate it on the test set.
+- `preprocess.py`: This script contains functions for preprocessing the raw image data and creating train and test datasets.
+- `train_steps.py`: This script contains functions for training and evaluating a model on the dataset.
+- `train_model.py`: This script is the entry point for training and evaluating a model. It uses the functions from the other two scripts to preprocess the data, train a model, and evaluate it on the test set.
 Running the Code
 To run the code, you will need to install the necessary dependencies and download the data. Once these steps are complete, you can run the main.py script to train and evaluate the model.
 
